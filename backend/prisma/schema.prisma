@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum ReportStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+  model ReportRun {
+    id        String       @id @default(uuid())
+    reportId  String       @map("report_id")
+    status    ReportStatus @default(PENDING)
+    fileUrl   String?      @map("file_url")
+    error     String?
+    params    Json?
+    createdAt DateTime     @default(now()) @map("created_at")
+    updatedAt DateTime     @updatedAt @map("updated_at")
+
+    @@index([reportId])
+    @@index([createdAt])
+    @@map("report_runs")
+  }

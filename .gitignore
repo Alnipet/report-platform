@@ -1,0 +1,23 @@
+# Root gitignore
+
+# Mac
+.DS_Store
+
+# Temporary Local Files
+tmp/
+tmp/reports/
+
+# Dependencies
+node_modules/
+
+# IDE
+.idea/
+.vscode/
+
+# Docker
+docker-compose.override.yml
+
+# Environment Variables
+.env
+.env.*
+!.env.example
